@@ -73,17 +73,23 @@ public class logicScript : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////
 
+    public void tinyIncrease()
+    {
+        int subject = Random.Range(1, 5); // may implement choosing subject later
+
+        statBoost(subject, 1, happinessFactor());  
+    }
+
     [ContextMenu("Small Increase")]
     public void smallIncrease()
     {
         int increase = Random.Range(1,3);
         int subject = Random.Range(1, 5); // may implement choosing subject later
-        
 
-        statBoost(subject, increase, happinessFactor());
-        
-        
+        statBoost(subject, increase, happinessFactor());  
     }
+
+
 
     [ContextMenu("Big Increase")]
     public void bigIncrease()
@@ -104,6 +110,18 @@ public class logicScript : MonoBehaviour
     {
         happiness = happiness + change;
         happinessNumber.text = "Happiness: " + happiness.ToString();
+    }
+
+    public void moneyChange(int change)
+    {
+        money = money + change;
+        moneyNumber.text = "Money: " + money.ToString();
+    }
+
+    public void socialChange(int change)
+    {
+        social = social + change;
+        socialNumber.text = "Social: " + social.ToString();
     }
 
 
@@ -145,7 +163,57 @@ public class logicScript : MonoBehaviour
     public void study()
     {
         smallIncrease();
-        happinessChange(-10);
+        happinessChange(-20);
         daysChange();
+    }
+
+    [ContextMenu("Bowling")]
+    public void bowling()
+    {
+        happinessChange(20);
+        moneyChange(100);
+        daysChange();
+
+    }
+
+    public void cashier()
+    {
+        happinessChange(-10);
+        moneyChange(200);
+        daysChange();
+
+    }
+
+    public void disney()
+    {
+        happiness = 100;
+        happinessNumber.text = "Happiness: " + happiness.ToString();
+        moneyChange(-500);
+        daysChange();
+    }
+
+    public void studyGroup()
+    {
+        happinessChange(-10);
+        socialChange(5);
+        tinyIncrease();
+        daysChange();
+    }
+
+    public void tutor()
+    {
+        happinessChange(-10);
+        moneyChange(-100);
+        bigIncrease();
+        daysChange();
+
+    }
+
+    public void hiking()
+    {
+        happinessChange(20);
+        socialChange(20);
+        daysChange();
+
     }
 }
