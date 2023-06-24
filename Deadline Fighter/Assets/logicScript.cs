@@ -26,33 +26,60 @@ public class logicScript : MonoBehaviour
     public Text scienceNumber;
     public Text humanitiesNumber;
 
-    [ContextMenu("School")]
-    void school()
+    void statBoost (int subject, int increase, int size)
     {
-        int schoolIncrease = Random.Range(3, 6);
-        int subjectChoice = Random.Range(1, 5); 
-
-        switch(subjectChoice)
+        switch(subject)
         {
             case 1:
-                language = language + schoolIncrease;
+                language = language + increase * size;
                 languageNumber.text = "Language: " + language.ToString();
                 break;
 
             case 2:
-                mathematics = mathematics + schoolIncrease;
+                mathematics = mathematics + increase * size;
                 mathNumber.text = "Math: " + mathematics.ToString();
                 break;
 
             case 3:
-                science = science + schoolIncrease;
+                science = science + increase * size;
                 scienceNumber.text = "Science: " + science.ToString();
                 break;
 
             case 4:
-                humanities = humanities + schoolIncrease;
+                humanities = humanities + increase * size;
                 humanitiesNumber.text = "Humanities: " + humanities.ToString();
                 break;
+
         }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+    [ContextMenu("School")]
+    void school()
+    {
+        int increase = Random.Range(3, 6);
+        int subject = Random.Range(1, 5); 
+
+        statBoost(subject, increase, 3);
+    }
+
+    [ContextMenu("Small Increase")]
+    void smallIncrease(int subject)
+    {
+        int increase = Random.Range(1,4);
+
+        statBoost(subject, increase, 1);
+    }
+
+    [ContextMenu("Big Increase")]
+    void bigIncrease(int subject)
+    {
+        int increase = Random.Range(3,6);
+
+        statBoost(subject, increase, 2);
+        
     }
 }
