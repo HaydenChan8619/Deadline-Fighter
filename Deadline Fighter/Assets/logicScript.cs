@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class logicScript : MonoBehaviour
 {
 
     public int days = 100;
-    public int money;
-    public int happiness;
-    public int social;
+    public int money = 100;
+    public int happiness = 100;
+    public int social = 100;
 
-    public int language;
-    public int mathematics;
-    public int science;
-    public int humanities;
+    public int language = 0;
+    public int mathematics = 0;
+    public int science = 0;
+    public int humanities = 0;
 
     public Text daysNumber;
     public Text moneyNumber;
@@ -26,7 +27,22 @@ public class logicScript : MonoBehaviour
     public Text scienceNumber;
     public Text humanitiesNumber;
 
-    void statBoost (int subject, int increase, int size)
+    public GameObject studyButton;
+
+   void Start()
+    {
+        daysNumber.text = "Days Left: " + days.ToString();
+        moneyNumber.text = "Money: " + money.ToString();
+        happinessNumber.text = "Happiness: " + happiness.ToString();
+        socialNumber.text = "Social: " + social.ToString();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+
+    public void statBoost (int subject, int increase, int size)
     {
         switch(subject)
         {
@@ -57,29 +73,79 @@ public class logicScript : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////
 
+    [ContextMenu("Small Increase")]
+    public void smallIncrease()
+    {
+        int increase = Random.Range(1,3);
+        int subject = Random.Range(1, 5); // may implement choosing subject later
+        
+
+        statBoost(subject, increase, happinessFactor());
+        
+        
+    }
+
+    [ContextMenu("Big Increase")]
+    public void bigIncrease()
+    {
+        int increase = Random.Range(3,6);
+        int subject = Random.Range(1, 5); // may implement choosing subject later
+
+        statBoost(subject, increase, 2);
+        
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+
+    public void happinessChange(int change)
+    {
+        happiness = happiness + change;
+        happinessNumber.text = "Happiness: " + happiness.ToString();
+    }
+
+
+
+    int happinessFactor()
+    {
+        int factor = 1;
+
+        if (happiness > 50)
+        {
+            factor = 2;
+        } else if (happiness > 0)
+        {
+            factor = 1;
+        } else 
+        {
+            factor = 0;
+        }
+        return factor;
+    }
+
+    public void daysChange()
+    {
+        days = days - 1;
+        daysNumber.text = "Days Left: " + days.ToString();
+        //school();
+    }
+
     [ContextMenu("School")]
-    void school()
+    public void school()
     {
         int increase = Random.Range(3, 6);
         int subject = Random.Range(1, 5); 
 
-        statBoost(subject, increase, 3);
-    }
-
-    [ContextMenu("Small Increase")]
-    void smallIncrease(int subject)
-    {
-        int increase = Random.Range(1,4);
-
         statBoost(subject, increase, 1);
     }
 
-    [ContextMenu("Big Increase")]
-    void bigIncrease(int subject)
+    [ContextMenu("Study")]
+    public void study()
     {
-        int increase = Random.Range(3,6);
-
-        statBoost(subject, increase, 2);
-        
+        smallIncrease();
+        happinessChange(-10);
+        daysChange();
     }
 }
