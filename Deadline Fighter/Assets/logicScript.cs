@@ -29,7 +29,11 @@ public class logicScript : MonoBehaviour
 
     public GameObject studyButton;
 
-   void Start()
+    public const int maxStat = 100;
+    public const int minStat = 0;
+
+    //
+   void Start() 
     {
         daysNumber.text = "Days Left: " + days.ToString();
         moneyNumber.text = "Money: " + money.ToString();
@@ -73,32 +77,12 @@ public class logicScript : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////
 
-    public void tinyIncrease()
+    public void statIncrease(int minChange, int MaxChange, int changeFactor)
     {
+        int increase = Random.Range(minChange,MaxChange);
         int subject = Random.Range(1, 5); // may implement choosing subject later
 
-        statBoost(subject, 1, happinessFactor());  
-    }
-
-    [ContextMenu("Small Increase")]
-    public void smallIncrease()
-    {
-        int increase = Random.Range(1,3);
-        int subject = Random.Range(1, 5); // may implement choosing subject later
-
-        statBoost(subject, increase, happinessFactor());  
-    }
-
-
-
-    [ContextMenu("Big Increase")]
-    public void bigIncrease()
-    {
-        int increase = Random.Range(3,6);
-        int subject = Random.Range(1, 5); // may implement choosing subject later
-
-        statBoost(subject, increase, 2);
-        
+        statBoost(subject, increase, changeFactor);
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -109,6 +93,14 @@ public class logicScript : MonoBehaviour
     public void happinessChange(int change)
     {
         happiness = happiness + change;
+        
+        if(happiness < minStat)
+        {
+            happiness = minStat;
+        } else if (happiness > maxStat)
+        {
+            happiness = maxStat;
+        }
         happinessNumber.text = "Happiness: " + happiness.ToString();
     }
 
@@ -121,10 +113,20 @@ public class logicScript : MonoBehaviour
     public void socialChange(int change)
     {
         social = social + change;
+
+        if(social < minStat)
+        {
+            social = minStat;
+        } else if (social > maxStat)
+        {
+            social = maxStat;
+        }
         socialNumber.text = "Social: " + social.ToString();
     }
 
+    ///////////////////////////////////////////////////////////////////////////////
 
+    ///////////////////////////////////////////////////////////////////////////////
 
     int happinessFactor()
     {
@@ -143,11 +145,30 @@ public class logicScript : MonoBehaviour
         return factor;
     }
 
-    public void daysChange()
+    bool moneyCheck(int cost)
+    {
+        bool afford = money >= cost;
+        return afford;
+    }
+
+    public void socialUpdate()
+    {
+        if (social >= 50)
+        {
+            happinessChange(change:5);
+            socialChange(change:-10);
+        } else {
+            happinessChange(change:-5);
+            socialChange(change:-15);
+        }
+    }
+
+    public void daysChange(ref int days)
     {
         days = days - 1;
         daysNumber.text = "Days Left: " + days.ToString();
-        //school();
+        socialUpdate();
+        //school();  //COME BACK LATER AND RE-THINK IF THIS IS NEEDED.
     }
 
     [ContextMenu("School")]
@@ -162,58 +183,71 @@ public class logicScript : MonoBehaviour
     [ContextMenu("Study")]
     public void study()
     {
-        smallIncrease();
-        happinessChange(-20);
-        daysChange();
+        statIncrease(minChange:1, MaxChange:3,changeFactor:happinessFactor());
+        happinessChange(change:-20);
+        daysChange(ref days);
     }
 
     [ContextMenu("Bowling")]
     public void bowling()
     {
-        happinessChange(20);
-        moneyChange(100);
-        daysChange();
+        if (moneyCheck(cost:100))
+        {
+            happinessChange(change:20);
+            moneyChange(change:-100);
+            daysChange(ref days);
+        }
+        
 
     }
 
     public void cashier()
     {
-        happinessChange(-10);
-        moneyChange(200);
-        daysChange();
+        happinessChange(change:-10);
+        moneyChange(change:200);
+        daysChange(ref days);
 
     }
 
     public void disney()
     {
-        happiness = 100;
-        happinessNumber.text = "Happiness: " + happiness.ToString();
-        moneyChange(-500);
-        daysChange();
+
+        if (moneyCheck(cost:500))
+        {
+            happiness = 100;
+            happinessNumber.text = "Happiness: " + happiness.ToString();
+            moneyChange(change:-500);
+            daysChange(ref days);
+        }
+        
     }
 
     public void studyGroup()
     {
-        happinessChange(-10);
-        socialChange(5);
-        tinyIncrease();
-        daysChange();
+        happinessChange(change:-10);
+        socialChange(change:20);
+        statIncrease(minChange:1, MaxChange:2,changeFactor:happinessFactor());
+        daysChange(ref days);
     }
 
     public void tutor()
     {
-        happinessChange(-10);
-        moneyChange(-100);
-        bigIncrease();
-        daysChange();
+        if (moneyCheck(cost:100))
+        {
+            happinessChange(change:-10);
+            moneyChange(change:-100);
+            statIncrease(minChange:3, MaxChange:6,changeFactor:2);
+            daysChange(ref days);
+        }
+
 
     }
 
     public void hiking()
     {
-        happinessChange(20);
-        socialChange(20);
-        daysChange();
+        happinessChange(change:20);
+        socialChange(change:30);
+        daysChange(ref days);
 
     }
 }
