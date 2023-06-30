@@ -13,6 +13,7 @@ public class buttonPopUpScript : MonoBehaviour
     public GameObject cashierMenu;
     public GameObject tutorMenu;
     public GameObject hikingMenu;
+    public GameObject statMenu;
 
     public GameObject disney;
     public GameObject study;
@@ -21,6 +22,13 @@ public class buttonPopUpScript : MonoBehaviour
     public GameObject cashier;
     public GameObject tutor;
     public GameObject hiking;
+    public GameObject stat;
+
+    public bool gameActive = true;
+
+    public Text statDescription;
+
+    public logicScript logic;
 
     public void buttonDisable()
     {
@@ -31,17 +39,23 @@ public class buttonPopUpScript : MonoBehaviour
         cashier.SetActive(false);
         tutor.SetActive(false);
         hiking.SetActive(false);
+        stat.SetActive(false);
+        
     }
 
     public void buttonEnable()
     {
-        disney.SetActive(true);
-        study.SetActive(true);
-        studyGroup.SetActive(true);
-        bowling.SetActive(true);
-        cashier.SetActive(true);
-        tutor.SetActive(true);
-        hiking.SetActive(true);
+        if (gameActive)
+        {
+            disney.SetActive(true);
+            study.SetActive(true);
+            studyGroup.SetActive(true);
+            bowling.SetActive(true);
+            cashier.SetActive(true);
+            tutor.SetActive(true);
+            hiking.SetActive(true);
+            stat.SetActive(true);
+        }
     }
 
     public void disneyButton()
@@ -87,6 +101,13 @@ public class buttonPopUpScript : MonoBehaviour
         buttonDisable();
     }
 
+    public void statButton()
+    {
+        statMenu.SetActive(true);
+        statLoadIn();
+        buttonDisable();
+    }
+
     public void disneyGoBack()
     {
         disneyMenu.SetActive(false);
@@ -127,6 +148,23 @@ public class buttonPopUpScript : MonoBehaviour
     {
         hikingMenu.SetActive(false);
         buttonEnable();
+    }
+
+    public void statGoBack()
+    {
+        statMenu.SetActive(false);
+        buttonEnable();
+    }
+
+    public void statLoadIn(){
+        statDescription.text = "Disney:" + logic.disneyCount + "\nStudy:" + logic.studyCount + "\nStudyGroup:" + logic.studyGroupCount
+                            + "\nBowling:" + logic.bowlingCount + "\nCashier:" + logic.cashierCount + "\nTutor:" + logic.tutorCount + "\nHiking:" + logic.hikingCount;
+                                
+    }
+
+    public void endGame()
+    {
+        gameActive = false;
     }
 
 }

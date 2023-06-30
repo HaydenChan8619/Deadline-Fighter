@@ -10,6 +10,7 @@ public class pauseMenuScript : MonoBehaviour
 
     public GameObject pauseMenu;
     public logicScript logic;
+    public buttonPopUpScript buttonPopUpSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +23,15 @@ public class pauseMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("yes");
             if (pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(false);
+                buttonPopUpSystem.buttonEnable();
+                
             } else 
             {
                 pauseMenu.SetActive(true);
+                buttonPopUpSystem.buttonDisable();
             }
             
         }
@@ -52,6 +55,14 @@ public class pauseMenuScript : MonoBehaviour
         logic.science = 0;
         logic.humanities = 0;
 
+        logic.disneyCount = 0;
+        logic.studyCount = 0;
+        logic.studyGroupCount = 0;
+        logic.bowlingCount = 0;
+        logic.cashierCount = 0;
+        logic.tutorCount = 0;
+        logic.hikingCount = 0;
+
         logic.daysNumber.text = "Days Left: " + logic.days.ToString();
         logic.moneyNumber.text = "Money: " + logic.money.ToString();
         logic.happinessNumber.text = "Happiness: " + logic.happiness.ToString();
@@ -63,6 +74,8 @@ public class pauseMenuScript : MonoBehaviour
         logic.humanitiesNumber.text = "Humanities: " + logic.humanities.ToString();
 
         pauseMenu.SetActive(false);
+        buttonPopUpSystem.gameActive = true;
+        buttonPopUpSystem.buttonEnable();
         
     }
     
