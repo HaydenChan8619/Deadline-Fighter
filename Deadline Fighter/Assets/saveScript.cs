@@ -77,10 +77,10 @@ public class saveScript : MonoBehaviour
         logic.happiness = PlayerPrefs.GetInt("Happiness", 100);
         logic.social = PlayerPrefs.GetInt("Social", 100);
         
-        logic.language = PlayerPrefs.GetInt("Language", 100);
-        logic.mathematics = PlayerPrefs.GetInt("Math", 100);
-        logic.science = PlayerPrefs.GetInt("Science", 100);
-        logic.humanities = PlayerPrefs.GetInt("Humanities", 100);
+        logic.language = PlayerPrefs.GetInt("Language", 0);
+        logic.mathematics = PlayerPrefs.GetInt("Math", 0);
+        logic.science = PlayerPrefs.GetInt("Science", 0);
+        logic.humanities = PlayerPrefs.GetInt("Humanities", 0);
 
 
         logic.disneyCount = PlayerPrefs.GetInt("Disney",0);

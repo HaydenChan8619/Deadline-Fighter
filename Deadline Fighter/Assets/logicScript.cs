@@ -37,6 +37,9 @@ public class logicScript : MonoBehaviour
     public GameObject tutorMenu;
     public GameObject hikingMenu;
 
+    public GameObject happinessErrorMenu;
+    public GameObject moneyErrorMenu;
+
     public int disneyCount = 0;
     public int studyCount = 0;
     public int studyGroupCount = 0;
@@ -186,6 +189,7 @@ public class logicScript : MonoBehaviour
         days = days - 1;
         daysNumber.text = "Days Left: " + days.ToString();
         socialUpdate();
+        Debug.Log(mathematics);
         if (days == 0)
         {
             buttonPopUpSystem.endGame();
@@ -205,12 +209,19 @@ public class logicScript : MonoBehaviour
     [ContextMenu("Study")]
     public void study()
     {
-        statIncrease(minChange:1, MaxChange:3,changeFactor:happinessFactor());
-        happinessChange(change:-20);
-        daysChange(ref days);
-        studyCount += 1;
-        studyMenu.SetActive(false);
-        buttonPopUpSystem.buttonEnable();
+        if(happiness > 20)
+        {
+            statIncrease(minChange:1, MaxChange:3,changeFactor:happinessFactor());
+            happinessChange(change:-20);
+            daysChange(ref days);
+            studyCount += 1;
+            studyMenu.SetActive(false);
+            buttonPopUpSystem.buttonEnable();
+        } else
+        {
+            happinessErrorMenu.SetActive(true);
+        }
+        
     }
 
     [ContextMenu("Bowling")]
@@ -224,6 +235,9 @@ public class logicScript : MonoBehaviour
             bowlingCount += 1;
             bowlingMenu.SetActive(false);
             buttonPopUpSystem.buttonEnable();
+        } else
+        {
+            moneyErrorMenu.SetActive(true);
         }
         
 
@@ -231,12 +245,20 @@ public class logicScript : MonoBehaviour
 
     public void cashier()
     {
-        happinessChange(change:-10);
-        moneyChange(change:200);
-        daysChange(ref days);
-        cashierCount += 1;
-        cashierMenu.SetActive(false);
-        buttonPopUpSystem.buttonEnable();
+
+        if (happiness > 20)
+        {
+            happinessChange(change:-10);
+            moneyChange(change:200);
+            daysChange(ref days);
+            cashierCount += 1;
+            cashierMenu.SetActive(false);
+            buttonPopUpSystem.buttonEnable();
+        } else
+        {
+            happinessErrorMenu.SetActive(true);
+        }
+        
 
     }
 
@@ -252,24 +274,34 @@ public class logicScript : MonoBehaviour
             disneyCount += 1;
             disneyMenu.SetActive(false);
             buttonPopUpSystem.buttonEnable();
+        } else
+        {
+            moneyErrorMenu.SetActive(true);
         }
         
     }
 
     public void studyGroup()
     {
-        happinessChange(change:-10);
-        socialChange(change:20);
-        statIncrease(minChange:1, MaxChange:2,changeFactor:happinessFactor());
-        daysChange(ref days);
-        studyGroupCount += 1;
-        studyGroupMenu.SetActive(false);
-        buttonPopUpSystem.buttonEnable();
+        if (happiness > 20)
+        {
+            happinessChange(change:-10);
+            socialChange(change:20);
+            statIncrease(minChange:1, MaxChange:2,changeFactor:happinessFactor());
+            daysChange(ref days);
+            studyGroupCount += 1;
+            studyGroupMenu.SetActive(false);
+            buttonPopUpSystem.buttonEnable();
+        } else
+        {
+            happinessErrorMenu.SetActive(true);
+        }
+        
     }
 
     public void tutor()
     {
-        if (moneyCheck(cost:100))
+        if (moneyCheck(cost:100) && happiness > 20)
         {
             happinessChange(change:-10);
             moneyChange(change:-100);
@@ -278,6 +310,12 @@ public class logicScript : MonoBehaviour
             tutorCount += 1;
             tutorMenu.SetActive(false);
             buttonPopUpSystem.buttonEnable();
+        } else if (happiness <= 20)
+        {
+            happinessErrorMenu.SetActive(true);
+        } else 
+        {
+            moneyErrorMenu.SetActive(true);
         }
 
 
@@ -286,7 +324,7 @@ public class logicScript : MonoBehaviour
     public void hiking()
     {
         happinessChange(change:20);
-        socialChange(change:30);
+        socialChange(change:45);
         daysChange(ref days);
         hikingCount += 1;
         hikingMenu.SetActive(false);

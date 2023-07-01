@@ -37,6 +37,12 @@ public class pauseMenuScript : MonoBehaviour
         }
     }
 
+    public void openPause()
+    {
+        pauseMenu.SetActive(true);
+        buttonPopUpSystem.buttonDisable();
+    }
+
     public void closeGame()
     {
         Application.Quit();
