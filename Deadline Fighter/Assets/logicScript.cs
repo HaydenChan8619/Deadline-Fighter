@@ -58,8 +58,8 @@ public class logicScript : MonoBehaviour
     {
         daysNumber.text = "Days Left: " + days.ToString();
         moneyNumber.text = "Money: " + money.ToString();
-        happinessNumber.text = "Happiness: " + happiness.ToString();
-        socialNumber.text = "Social: " + social.ToString();
+        happinessNumber.text = "Happiness: " + happiness.ToString() + "%";
+        socialNumber.text = "Social: " + social.ToString() + "%";
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -73,22 +73,22 @@ public class logicScript : MonoBehaviour
         {
             case 1:
                 language = language + increase * size;
-                languageNumber.text = "Language: " + language.ToString();
+                languageNumber.text = "Language: " + language.ToString() + "%";
                 break;
 
             case 2:
                 mathematics = mathematics + increase * size;
-                mathNumber.text = "Math: " + mathematics.ToString();
+                mathNumber.text = "Math: " + mathematics.ToString() + "%";
                 break;
 
             case 3:
                 science = science + increase * size;
-                scienceNumber.text = "Science: " + science.ToString();
+                scienceNumber.text = "Science: " + science.ToString() + "%";
                 break;
 
             case 4:
                 humanities = humanities + increase * size;
-                humanitiesNumber.text = "Humanities: " + humanities.ToString();
+                humanitiesNumber.text = "Humanities: " + humanities.ToString() + "%";
                 break;
 
         }
@@ -122,7 +122,7 @@ public class logicScript : MonoBehaviour
         {
             happiness = maxStat;
         }
-        happinessNumber.text = "Happiness: " + happiness.ToString();
+        happinessNumber.text = "Happiness: " + happiness.ToString() + "%";
     }
 
     public void moneyChange(int change)
@@ -142,7 +142,7 @@ public class logicScript : MonoBehaviour
         {
             social = maxStat;
         }
-        socialNumber.text = "Social: " + social.ToString();
+        socialNumber.text = "Social: " + social.ToString() + "%";
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -189,7 +189,6 @@ public class logicScript : MonoBehaviour
         days = days - 1;
         daysNumber.text = "Days Left: " + days.ToString();
         socialUpdate();
-        Debug.Log(mathematics);
         if (days == 0)
         {
             buttonPopUpSystem.endGame();

@@ -1170,7 +1170,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Language: 0'
+      value: 'Language: 0%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -1653,7 +1653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Days Left: 0'
+      value: 'Days Left: 100'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -2057,10 +2057,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2878,7 +2878,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Math: 0'
+      value: 'Math: 0%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -3004,7 +3004,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Happiness: 0'
+      value: 'Happiness: 100%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -4235,7 +4235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Humanities: 0'
+      value: 'Humanities: 0%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -4692,7 +4692,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Social: 0'
+      value: 'Social: 100%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -5168,7 +5168,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Money: 0'
+      value: 'Money: 100'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -6067,7 +6067,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 961719009787576844, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Text
-      value: 'Science: 0'
+      value: 'Science: 0%'
       objectReference: {fileID: 0}
     - target: {fileID: 4108246120473114877, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_Name
@@ -6103,7 +6103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074757096956280251, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 366.103
       objectReference: {fileID: 0}
     - target: {fileID: 8074757096956280251, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6139,7 +6139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074757096956280251, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 171.1
+      value: 179.15152
       objectReference: {fileID: 0}
     - target: {fileID: 8074757096956280251, guid: 5ff270a5ae201f243adde2cc71c6e4fc, type: 3}
       propertyPath: m_AnchoredPosition.y
