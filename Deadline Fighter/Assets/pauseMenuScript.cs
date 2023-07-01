@@ -12,6 +12,9 @@ public class pauseMenuScript : MonoBehaviour
     public logicScript logic;
     public buttonPopUpScript buttonPopUpSystem;
 
+    public GameObject startUp;
+    public GameObject tutorial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,7 @@ public class pauseMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && startUp.activeSelf == false && tutorial.activeSelf == false)
         {
             if (pauseMenu.activeSelf)
             {

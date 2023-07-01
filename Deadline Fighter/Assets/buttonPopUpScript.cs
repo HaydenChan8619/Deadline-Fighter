@@ -34,6 +34,7 @@ public class buttonPopUpScript : MonoBehaviour
     public bool gameActive = true;
 
     public GameObject endGameMenu;
+    public Text endResult;
     public Text finalScore;
     public Text highScore;
 
@@ -213,6 +214,7 @@ public class buttonPopUpScript : MonoBehaviour
         endGameFinalScore();
         highScoreUpdate();
         endGameHighScore();
+        endResultUpdate();
     }
 
     public void endGameFinalScore()
@@ -263,6 +265,21 @@ public class buttonPopUpScript : MonoBehaviour
                          "\nS:" + PlayerPrefs.GetInt("ScienceHighScore",0) + "  H:" + PlayerPrefs.GetInt("HumanitiesHighScore",0);
     }
 
+    public void endResultUpdate()
+    {
+        int endscore = (logic.language + logic.mathematics + logic.science + logic.humanities) / 4;
+        Debug.Log(endscore);
 
+        if (endscore > 86)
+        {
+            endResult.text = "University";
+        } else if (endscore > 50)
+        {
+            endResult.text = "College";
+        } else 
+        {
+            endResult.text = "Part-Timer";
+        }
+    }
 
 }
