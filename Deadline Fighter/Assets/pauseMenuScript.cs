@@ -71,13 +71,13 @@ public class pauseMenuScript : MonoBehaviour
 
         logic.daysNumber.text = "Days Left: " + logic.days.ToString();
         logic.moneyNumber.text = "Money: " + logic.money.ToString();
-        logic.happinessNumber.text = "Happiness: " + logic.happiness.ToString();
-        logic.socialNumber.text = "Social: " + logic.social.ToString();
+        logic.happinessNumber.text = "Happiness: " + logic.happiness.ToString()  + "%";
+        logic.socialNumber.text = "Social: " + logic.social.ToString()  + "%";
 
-        logic.languageNumber.text = "Language: " + logic.language.ToString();
-        logic.mathNumber.text = "Math: " + logic.mathematics.ToString();
-        logic.scienceNumber.text = "Science: " + logic.science.ToString();
-        logic.humanitiesNumber.text = "Humanities: " + logic.humanities.ToString();
+        logic.languageNumber.text = "Language: " + logic.language.ToString()  + "%";
+        logic.mathNumber.text = "Math: " + logic.mathematics.ToString()  + "%";
+        logic.scienceNumber.text = "Science: " + logic.science.ToString()  + "%";
+        logic.humanitiesNumber.text = "Humanities: " + logic.humanities.ToString()  + "%";
 
         pauseMenu.SetActive(false);
         buttonPopUpSystem.gameActive = true;

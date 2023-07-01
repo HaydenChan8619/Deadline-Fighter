@@ -12,8 +12,10 @@ public class startMenuScript : MonoBehaviour
     public GameObject box1;
     public GameObject box2;
     public GameObject startMenu;
+    public GameObject tutorial;
 
     public saveScript save;
+    public pauseMenuScript pause;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,17 @@ public class startMenuScript : MonoBehaviour
     public void startNewGame()
     {
         startMenu.SetActive(false);
+        tutorial.SetActive(true);
 
+    }
+
+    public void tutorialStartGame()
+    {
+        tutorial.SetActive(false);
+        ui.SetActive(true);
+        buttons.SetActive(true);
+        box1.SetActive(true);
+        box2.SetActive(true);
+        pause.restartGame();
     }
 }
